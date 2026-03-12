@@ -64,6 +64,11 @@
   --border-light: #2A2A2A;
 }
 
+/* Light Mode Overrides (ensure white text switches to dark) */
+[data-theme="light"] {
+  /* when in light theme we don't want any element forced white, so override variable */
+  --text-white: #000000;
+}
 /* ===== RESET & BASE STYLES ===== */
 * {
   margin: 0;
@@ -723,7 +728,7 @@ ul, ol {
 /* ===== UTILITY CLASSES ===== */
 .text-center { text-align: center; }
 .text-gold { color: var(--primary-gold); }
-.text-white { color: var(--text-light); }
+.text-white { color: var(--text-white); /* will switch to black in light mode via variable override */ }
 .mt-0 { margin-top: 0; }
 .mb-0 { margin-bottom: 0; }
 .mt-md { margin-top: var(--spacing-md); }

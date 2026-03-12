@@ -440,8 +440,8 @@
         <i class="fas fa-chevron-right" style="font-size: 0.75rem;"></i>
         <span>BMW M4 Competition</span>
       </div>
-      <h1>BMW M4 Competition</h1>
-      <p style="opacity: 0.9; font-size: 1.125rem;">Experience the ultimate driving machine with unmatched performance and luxury</p>
+      <h1>2024 BMW M4 Competition</h1>
+      <p style="opacity: 0.9; font-size: 1.125rem;">Presenting the pinnacle of performance engineering — the BMW M4 Competition. A premium sports sedan built for exhilarating power, precision handling, and motorsport-inspired technology.</p>
     </div>
   </section>
 
@@ -494,7 +494,7 @@
               </div>
               <div class="spec-details">
                 <h4>Mileage</h4>
-                <p>2,500 miles</p>
+                <p>1,200 miles</p>
               </div>
             </div>
             
@@ -524,7 +524,7 @@
               </div>
               <div class="spec-details">
                 <h4>Exterior Color</h4>
-                <p>Sao Paulo Yellow</p>
+                <p>Black Sapphire</p>
               </div>
             </div>
             
@@ -534,7 +534,7 @@
               </div>
               <div class="spec-details">
                 <h4>Interior</h4>
-                <p>Black Merino Leather</p>
+                <p>Merino Leather Black</p>
               </div>
             </div>
           </div>
@@ -725,8 +725,8 @@
           <h3 class="footer-title">RadMotors</h3>
           <p>Your trusted partner for premium vehicles. Experience luxury car buying like never before.</p>
           <div class="flex gap-sm mt-md">
-            <a href="#" style="color: var(--text-light);"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" style="color: var(--text-light);"><i class="fab fa-instagram"></i></a>
+            <a href="facebook.com/radmotor" style="color: var(--text-light);"><i class="fab fa-facebook-f"></i></a>
+            <a href="instagram.com/radmotors" style="color: var(--text-light);"><i class="fab fa-instagram"></i></a>
             <a href="#" style="color: var(--text-light);"><i class="fab fa-twitter"></i></a>
             <a href="#" style="color: var(--text-light);"><i class="fab fa-youtube"></i></a>
           </div>
@@ -757,7 +757,7 @@
         <div>
           <h3 class="footer-title">Contact Info</h3>
           <ul class="footer-links">
-            <li><i class="fas fa-map-marker-alt"></i> 123 Auto Boulevard, Palo Alto, CA 94301</li>
+            <li><i class="fas fa-map-marker-alt"></i> Kuola Bus-stop  Akala Express, Ibadan </li>
             <li><i class="fas fa-phone"></i> 09061957126</li>
             <li><i class="fas fa-envelope"></i> radmotorsw@gmail.com</li>
             <li><i class="fab fa-whatsapp"></i> 09061957126</li>
@@ -783,6 +783,115 @@
 
   <!-- JavaScript -->
   <script>
+    // Car Details Database
+    const carDatabase = {
+      'bmw-m4': {
+        name: 'BMW M4 Competition',
+        year: '2024',
+        price: '$89,900',
+        badge: 'New Arrival',
+        mileage: '1,200 miles',
+        transmission: 'Automatic',
+        fuel: 'Petrol',
+        color: 'Black Sapphire',
+        interior: 'Merino Leather Black',
+        images: [
+          'https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=400&q=80',
+          'https://images.unsplash.com/photo-1556189250-72ba954cfc2b?auto=format&fit=crop&w=400&q=80',
+          'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=400&q=80',
+          'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=400&q=80'
+        ],
+        description: 'The BMW M4 Competition represents the pinnacle of performance engineering, combining raw power with sophisticated luxury. This 2024 model delivers an exhilarating driving experience with its twin-turbocharged engine and advanced technology features.',
+        performance: ['503 HP Twin-Turbo Engine', '0-60 mph in 3.4 seconds', 'Top Speed: 180 mph', 'M xDrive All-Wheel Drive', '8-Speed M Steptronic Transmission', 'Adaptive M Suspension'],
+        interior: ['Merino Leather Upholstery', 'Heated & Ventilated Seats', 'BMW Live Cockpit Pro', 'Harman Kardon Sound System', 'Wireless Apple CarPlay', 'Ambient Interior Lighting'],
+        safety: ['Adaptive Cruise Control', 'Lane Departure Warning', 'Blind Spot Detection', 'Forward Collision Warning', 'Automatic Emergency Braking', '360° Camera System'],
+        luxury: ['Panoramic Moonroof', 'Carbon Fiber Roof', 'M Sport Exhaust System', 'Keyless Entry & Start', 'Power Trunk', 'Remote Engine Start']
+      }
+    };
+
+    // Load car details from URL parameter
+    function loadCarDetails() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const carId = urlParams.get('car');
+      
+      if (carId && carDatabase[carId]) {
+        const car = carDatabase[carId];
+        updatePageContent(car);
+      }
+    }
+
+    // Update page with car details
+    function updatePageContent(car) {
+      // Update title and breadcrumb
+      document.title = `${car.year} ${car.name} | RadMotors`;
+      document.querySelector('.breadcrumb span').textContent = car.name;
+      document.querySelector('.details-header h1').textContent = `${car.year} ${car.name}`;
+      
+      // Update images
+      const thumbs = document.querySelectorAll('.gallery-thumb');
+      car.images.forEach((img, index) => {
+        if (thumbs[index]) {
+          thumbs[index].src = img;
+        }
+      });
+      
+      // Update main image
+      document.getElementById('mainImage').src = car.images[0].replace('w=400', 'w=1200');
+      document.getElementById('modalImage').src = car.images[0].replace('w=400', 'w=2000');
+      
+      // Update car info
+      document.querySelector('.car-badge').textContent = car.badge;
+      document.querySelector('.car-title').textContent = car.name;
+      document.querySelector('.car-price').textContent = car.price;
+      document.querySelector('.car-title-section > p:last-of-type').textContent = car.description;
+      
+      // Update WhatsApp link
+      const whatsappLink = document.querySelector('[href*="wa.me"]');
+      if (whatsappLink) {
+        whatsappLink.href = `https://wa.me/09061957126?text=Hello!%20I'm%20interested%20in%20the%20${car.year}%20${car.name}%20-%20Price:%20${car.price}`;
+      }
+      
+      // Update specifications
+      const specs = [
+        { icon: 'fa-calendar-alt', label: 'Year', value: car.year },
+        { icon: 'fa-tachometer-alt', label: 'Mileage', value: car.mileage },
+        { icon: 'fa-cogs', label: 'Transmission', value: car.transmission },
+        { icon: 'fa-gas-pump', label: 'Fuel Type', value: car.fuel },
+        { icon: 'fa-palette', label: 'Exterior Color', value: car.color },
+        { icon: 'fa-chair', label: 'Interior', value: car.interior }
+      ];
+      
+      const specItems = document.querySelectorAll('.spec-item');
+      specs.forEach((spec, index) => {
+        if (specItems[index]) {
+          specItems[index].querySelector('.spec-details h4').textContent = spec.label;
+          specItems[index].querySelector('.spec-details p').textContent = spec.value;
+        }
+      });
+      
+      // Update features
+      updateFeatureList('.feature-category:nth-child(1) .feature-list', car.performance);
+      updateFeatureList('.feature-category:nth-child(2) .feature-list', car.interior);
+      updateFeatureList('.feature-category:nth-child(3) .feature-list', car.safety);
+      updateFeatureList('.feature-category:nth-child(4) .feature-list', car.luxury);
+    }
+
+    function updateFeatureList(selector, features) {
+      const container = document.querySelector(selector);
+      if (container) {
+        container.innerHTML = '';
+        features.forEach(feature => {
+          const item = document.createElement('div');
+          item.className = 'feature-item';
+          item.innerHTML = `<i class="fas fa-check"></i> ${feature}`;
+          container.appendChild(item);
+        });
+      }
+    }
+
+    // Load car details on page load
+    window.addEventListener('DOMContentLoaded', loadCarDetails);
+
     // Theme Toggle
     function toggleTheme() {
       const html = document.documentElement;

@@ -7,7 +7,7 @@
   <meta name="keywords" content="car dealer, luxury cars, sports cars, premium vehicles, buy cars">
   <title>RadMotors | Drive Your Dream Today</title>
   <!-- Favicon: ensure correct path and type -->
-  <link rel="icon" href="Image/RadLogo.png" type="image/png">
+  <link rel="icon" href="Image/Rad.png" type="image/png">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,7 +29,69 @@
     .hero-background img {
       object-position: center;
     }
-    
+    .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    z-index: 999;
+    transition: var(--transition-smooth);
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+.scroll-top,
+.scroll-bottom {
+    position: fixed;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary-gold);
+    color: var(--primary-black);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 998;
+    transition: var(--transition-smooth);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.scroll-top {
+    bottom: 100px;
+}
+
+.scroll-bottom {
+    bottom: 30px;
+}
+
+.scroll-top.visible,
+.scroll-bottom.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-top:hover,
+.scroll-bottom:hover {
+    transform: scale(1.1);
+    background: var(--primary-gold-light);
+}
     .feature-card {
       text-align: center;
       padding: var(--spacing-xl);
@@ -38,6 +100,7 @@
       box-shadow: var(--shadow-md);
       transition: all var(--transition-base);
       border: 1px solid var(--border-light);
+      color: var(--text-white);
     }
     
     .feature-card:hover {
@@ -64,6 +127,7 @@
       padding: var(--spacing-xl);
       box-shadow: var(--shadow-md);
       border: 1px solid var(--border-light);
+      color: var(--text-white);
     }
     
     .testimonial-stars {
@@ -146,18 +210,20 @@
   <nav class="navbar">
     <div class="navbar-container">
       <a href="index.html" class="navbar-logo">
-        <i class="fas fa-car-side text-gold"></i>
-        Rad<span>Motors</span>
+        <!-- <i class="fas fa-car-side text-gold"></i> -->
+         <img src="Image/Radlog.png" alt="Logo" style="width: 150px; height: 50px; margin-right: 8px;">
+        <!-- Rad<span>Motors</span> -->
       </a>
       
       <button class="navbar-toggle" onclick="toggleNavbar()">
         <i class="fas fa-bars"></i>
       </button>
+       
       
       <ul class="navbar-nav">
         <li><a href="index.html" class="navbar-link">Home</a></li>
         <li><a href="cars.html" class="navbar-link">Available Cars</a></li>
-        <li><a href="categories.html" class="navbar-link">Categories</a></li>
+        <!-- <li><a href="categories.html" class="navbar-link">Categories</a></li> -->
         <li><a href="about.html" class="navbar-link">About Us</a></li>
         <li><a href="contact.html" class="navbar-link">Contact</a></li>
         <li>
@@ -169,6 +235,19 @@
       </ul>
     </div>
   </nav>
+
+  <!-- Floating WhatsApp Button -->
+        <a href="https://wa.me/09061957126" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+   
+    <!-- Scroll Buttons -->
+    <button class="scroll-top" id="scrollTop" title="Scroll to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <button class="scroll-bottom" id="scrollBottom" title="Scroll to Bottom">
+        <i class="fas fa-arrow-down"></i>
+    </button>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -196,55 +275,263 @@
         <p>Explore our handpicked selection of premium vehicles</p>
       </div>
       
-      <div class="grid grid-3">
+      <div class="grid grid-4">
         <!-- Car Card 1 -->
         <div class="card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80" alt="BMW M4 Competition">
+            <img src="Image/lexus-rx-350/1.jpeg" alt="Lexus RX 350">
           </div>
           <div class="card-content">
-            <h3 class="card-title">BMW M4 Competition</h3>
-            <p class="card-price">$89,900</p>
+            <h3 class="card-title">Lexus RX 350 2010</h3>
+            <p class="card-price">₦22,500,000</p>
             <div class="card-specs">
-              <span class="card-spec"><i class="fas fa-calendar"></i> 2024</span>
+              <span class="card-spec"><i class="fas fa-calendar"></i> 2010</span>
               <span class="card-spec"><i class="fas fa-tachometer-alt"></i> 2,500 mi</span>
               <span class="card-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
             </div>
-            <a href="car-details.html" class="btn btn-outline" style="width: 100%;">View Details</a>
+            <a href="cars.html" class="btn btn-outline" style="width: 100%;">View Details</a>
           </div>
         </div>
         
         <!-- Car Card 2 -->
         <div class="card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80" alt="Mercedes-AMG GT">
+            <img src="Image/2024 Toyota RAV4 LE/1.jpeg" alt="Toyota RAV4 LE">
           </div>
           <div class="card-content">
-            <h3 class="card-title">Mercedes-AMG GT</h3>
-            <p class="card-price">$124,500</p>
+            <h3 class="card-title">Toyota RAV4 LE</h3>
+            <p class="card-price">₦57,000,000</p>
             <div class="card-specs">
               <span class="card-spec"><i class="fas fa-calendar"></i> 2024</span>
               <span class="card-spec"><i class="fas fa-tachometer-alt"></i> 1,200 mi</span>
               <span class="card-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
             </div>
-            <a href="car-details.html" class="btn btn-outline" style="width: 100%;">View Details</a>
+            <a href="cars.html" class="btn btn-outline" style="width: 100%;">View Details</a>
           </div>
         </div>
         
         <!-- Car Card 3 -->
         <div class="card">
           <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80" alt="Porsche 911 Carrera">
+            <img src="Image/2023 Lexus RX 350 F‑Sport/1.jpeg" alt="Lexus RX 350 F‑Sport">
           </div>
           <div class="card-content">
-            <h3 class="card-title">Porsche 911 Carrera</h3>
-            <p class="card-price">$149,900</p>
+            <h3 class="card-title">Lexus RX 350 F‑Sport</h3>
+            <p class="card-price">₦62,000,000</p>
             <div class="card-specs">
-              <span class="card-spec"><i class="fas fa-calendar"></i> 2024</span>
+              <span class="card-spec"><i class="fas fa-calendar"></i> 2023</span>
               <span class="card-spec"><i class="fas fa-tachometer-alt"></i> 800 mi</span>
               <span class="card-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
             </div>
-            <a href="car-details.html" class="btn btn-outline" style="width: 100%;">View Details</a>
+            <a href="cars.html" class="btn btn-outline" style="width: 100%;">View Details</a>
+          </div>
+        </div>
+            <!-- Car Card 4 -->
+        <div class="card">
+          <div class="card-image">
+            <img src="Image/2015 Toyota Avalon XLE/1.jpeg" alt="2015 Toyota Avalon XLE">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title"> 2015 Toyota Avalon XLE</h3>
+            <p class="card-price">₦15,000,000</p>
+            <div class="card-specs">
+              <span class="card-spec"><i class="fas fa-calendar"></i> 2015</span>
+              <span class="card-spec"><i class="fas fa-tachometer-alt"></i> 1,200 mi</span>
+              <span class="card-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
+            </div>
+            <a href="cars.html" class="btn btn-outline" style="width: 100%;">View Details</a>
+          </div>
+        </div>
+                <!-- Car Card 5 -->
+        <div class="card">
+          <div class="card-image">
+            <img src="Image/Toyota Highlander XLE/1.jpeg" alt="Toyota Highlander XLE">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Toyota Highlander XLE 2019</h3>
+            <p class="card-price">₦26,500,000</p>
+            <div class="card-specs">
+              <span class="card-spec"><i class="fas fa-calendar"></i> 2019</span>
+              <span class="card-spec"><i class="fas fa-tachometer-alt"></i> 1,200 mi</span>
+              <span class="card-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
+            </div>
+            <a href="cars.html" class="btn btn-outline" style="width: 100%;">View Details</a>
+          </div>
+        </div>
+         <!-- Car Card 6 -->
+        <div class="card">
+          <div class="card-image">
+            <img src="Image/Lexus RX 350(2)/1.jpeg" alt="Lexus RX 350">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">2010 Lexus RX 350</h3>
+            <p class="card-price">₦16,000,000</p>
+            <div class="card-specs">
+              <span class="card-spec"><i class="fas fa-calendar"></i> 2010</span>
+              <span class="card-spec"><i class="fas fa-tachometer-alt"></i> 1,200 mi</span>
+              <span class="card-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
+            </div>
+            <a href="cars.html" class="btn btn-outline" style="width: 100%;">View Details</a>
+          </div>
+        </div>
+         <!-- Car Card 7 -->
+        <div class="card">
+          <div class="card-image">
+            <img src="Image/Toyota Hilux Adventure/1.jpeg" alt="Toyota Hilux Adventure">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">2023 Toyota Hilux Adventure</h3>
+            <p class="card-price">₦85,000,000</p>
+            <div class="card-specs">
+              <span class="card-spec"><i class="fas fa-calendar"></i> 2023</span>
+              <span class="card-spec"><i class="fas fa-tachometer-alt"></i> 1,200 mi</span>
+              <span class="card-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
+            </div>
+            <a href="cars.html" class="btn btn-outline" style="width: 100%;">View Details</a>
+          </div>
+        </div>
+         <!-- Car Card 8 -->
+        <div class="card">
+          <div class="card-image">
+            <img src="Image/Mercedes-Benz GLE/1.jpeg" alt="Mercedes-Benz GLE">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">2016 Mercedes-Benz GLE 350</h3>
+            <p class="card-price">₦27,000,000</p>
+            <div class="card-specs">
+              <span class="card-spec"><i class="fas fa-calendar"></i> 2016</span>
+              <span class="card-spec"><i class="fas fa-tachometer-alt"></i> 1,200 mi</span>
+              <span class="card-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
+            </div>
+            <a href="cars.html" class="btn btn-outline" style="width: 100%;">View Details</a>
+          </div>
+        </div>
+         <!-- Car Card 9 -->
+        <div class="card">
+          <div class="card-image">
+            <img src="Image/Toyota Venza/1.jpeg" alt="Toyota Venza">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title"> 2012 Toyota Venza</h3>
+            <p class="card-price">₦13,000,000</p>
+            <div class="card-specs">
+              <span class="card-spec"><i class="fas fa-calendar"></i> 2012</span>
+              <span class="card-spec"><i class="fas fa-tachometer-alt"></i> 1,200 mi</span>
+              <span class="card-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
+            </div>
+            <a href="cars.html" class="btn btn-outline" style="width: 100%;">View Details</a>
+          </div>
+        </div>
+         <!-- Car Card 10 -->
+        <div class="card">
+          <div class="card-image">
+            <img src="Image/Lexus ES 350/1.jpeg" alt="Lexus ES 350">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">2013 Lexus ES 350 </h3>
+            <p class="card-price">₦19,000,000</p>
+            <div class="card-specs">
+              <span class="card-spec"><i class="fas fa-calendar"></i> 2013</span>
+              <span class="card-spec"><i class="fas fa-tachometer-alt"></i> 1,200 mi</span>
+              <span class="card-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
+            </div>
+            <a href="cars.html" class="btn btn-outline" style="width: 100%;">View Details</a>
+          </div>
+        </div>
+         <!-- Car Card 11 -->
+        <div class="card">
+          <div class="card-image">
+            <img src="Image/Lexus RX 350 F Sport (2)/1.jpeg" alt="2013 Lexus RX 350 F Sport">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">2013 Lexus RX 350 F Sport</h3>
+            <p class="card-price">₦28,000,000</p>
+            <div class="card-specs">
+              <span class="card-spec"><i class="fas fa-calendar"></i> 2013</span>
+              <span class="card-spec"><i class="fas fa-tachometer-alt"></i> 1,200 mi</span>
+              <span class="card-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
+            </div>
+            <a href="cars.html" class="btn btn-outline" style="width: 100%;">View Details</a>
+          </div>
+        </div>
+         <!-- Car Card 12 -->
+        <div class="card">
+          <div class="card-image">
+            <img src="Image/Toyota Highlander XSE/1.jpeg" alt="Toyota Highlander XSE">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">2023 Toyota Highlander XSE</h3>
+            <p class="card-price">₦82,000,000</p>
+            <div class="card-specs">
+              <span class="card-spec"><i class="fas fa-calendar"></i> 2023</span>
+              <span class="card-spec"><i class="fas fa-tachometer-alt"></i> 1,200 mi</span>
+              <span class="card-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
+            </div>
+            <a href="cars.html" class="btn btn-outline" style="width: 100%;">View Details</a>
+          </div>
+        </div>
+         <!-- Car Card 13 -->
+        <div class="card">
+          <div class="card-image">
+            <img src="Image/Toyota Highlander XLE/1.jpeg" alt="Toyota Highlander XLE">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">2015 Toyota Highlander XLE</h3>
+            <p class="card-price">₦26,500,000</p>
+            <div class="card-specs">
+              <span class="card-spec"><i class="fas fa-calendar"></i> 2015</span>
+              <span class="card-spec"><i class="fas fa-tachometer-alt"></i> 1,200 mi</span>
+              <span class="card-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
+            </div>
+            <a href="cars.html" class="btn btn-outline" style="width: 100%;">View Details</a>
+          </div>
+        </div>
+         <!-- Car Card 14 -->
+        <div class="card">
+          <div class="card-image">
+            <img src="Image/2016 Lexus RX 350 F-Sport/1.jpeg" alt="2016 Lexus RX 350 F-Sport">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">2016 Lexus RX 350 F-Sport</h3>
+            <p class="card-price">₦39,000,000</p>
+            <div class="card-specs">
+              <span class="card-spec"><i class="fas fa-calendar"></i> 2016</span>
+              <span class="card-spec"><i class="fas fa-tachometer-alt"></i> 1,200 mi</span>
+              <span class="card-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
+            </div>
+            <a href="cars.html" class="btn btn-outline" style="width: 100%;">View Details</a>
+          </div>
+        </div>
+                <!-- Car Card 15 -->
+        <div class="card">
+          <div class="card-image">
+            <img src="Image/2013 Toyota Camry Sport/1.jpeg" alt="Toyota Camry Sport 2013">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">Toyota Camry Sport 2013</h3>
+            <p class="card-price">₦12,500,000</p>
+            <div class="card-specs">
+              <span class="card-spec"><i class="fas fa-calendar"></i> 2013</span>
+              <span class="card-spec"><i class="fas fa-tachometer-alt"></i> 1,200 mi</span>
+              <span class="card-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
+            </div>
+            <a href="cars.html" class="btn btn-outline" style="width: 100%;">View Details</a>
+          </div>
+        </div>
+                <!-- Car Card 16 -->
+        <div class="card">
+          <div class="card-image">
+            <img src="Image/Lexus ES 350 Sedan/1.jpeg" alt="2010 Lexus ES 350 Sedan">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">2010 Lexus ES 350 Sedan</h3>
+            <p class="card-price">₦19,000,000</p>
+            <div class="card-specs">
+              <span class="card-spec"><i class="fas fa-calendar"></i> 2010</span>
+              <span class="card-spec"><i class="fas fa-tachometer-alt"></i> 1,200 mi</span>
+              <span class="card-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
+            </div>
+            <a href="cars.html" class="btn btn-outline" style="width: 100%;">View Details</a>
           </div>
         </div>
       </div>
@@ -252,7 +539,9 @@
       <div class="text-center mt-lg">
         <a href="cars.html" class="btn btn-primary btn-lg">View All Cars <i class="fas fa-arrow-right"></i></a>
       </div>
+      
     </div>
+        
   </section>
 
   <!-- Why Choose Us Section -->
@@ -269,7 +558,7 @@
             <i class="fas fa-shield-alt"></i>
           </div>
           <h3>Trusted Dealer</h3>
-          <p>Over 15 years of experience in the automotive industry with thousands of satisfied customers.</p>
+          <p>Over 5 years of experience in the automotive industry with thousands of satisfied customers.</p>
         </div>
         
         <div class="feature-card">
@@ -304,7 +593,7 @@
     <div class="container">
       <div class="grid grid-4">
         <div class="stat-item">
-          <div class="stat-number" data-target="500">0</div>
+          <div class="stat-number" data-target="100">0</div>
           <div class="stat-label">Cars Sold</div>
         </div>
         <div class="stat-item">
@@ -312,11 +601,11 @@
           <div class="stat-label">Years Experience</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number" data-target="1200">0</div>
+          <div class="stat-number" data-target="50">0</div>
           <div class="stat-label">Happy Customers</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number" data-target="50">0</div>
+          <div class="stat-number" data-target="20">0</div>
           <div class="stat-label">Car Brands</div>
         </div>
       </div>
@@ -340,12 +629,12 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
           </div>
-          <p>"Exceptional service from start to finish. The team helped me find the perfect BMW and the entire process was seamless. Highly recommended!"</p>
+          <p>"Exceptional service from start to finish. The team helped me find the perfect Toyota Highlander and the entire process was seamless. Highly recommended!"</p>
           <div class="flex-center gap-sm mt-md">
-            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" style="width: 50px; height: 50px; border-radius: 50%;">
+            <img src="Image/Rad.png" alt="Customer" style="width: 30px; height: 30px; border-radius: 50%;">
             <div>
-              <strong>Michael Johnson</strong>
-              <p style="font-size: 0.875rem; margin: 0;">BMW M4 Owner</p>
+              <strong>Ibukun Johnson</strong>
+              <p style="font-size: 0.875rem; margin: 0;">Highlander Owner</p>
             </div>
           </div>
         </div>
@@ -360,10 +649,10 @@
           </div>
           <p>"Found my dream Porsche at an incredible price. The car was in pristine condition and the warranty gives me complete peace of mind."</p>
           <div class="flex-center gap-sm mt-md">
-            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Customer" style="width: 50px; height: 50px; border-radius: 50%;">
+            <img src="Image/Rad.png" alt="Customer" style="width: 30px; height: 30px; border-radius: 50%;">
             <div>
               <strong>Sarah Williams</strong>
-              <p style="font-size: 0.875rem; margin: 0;">Porsche 911 Owner</p>
+              <p style="font-size: 0.875rem; margin: 0;">Lexus ES 350 Owner</p>
             </div>
           </div>
         </div>
@@ -378,10 +667,10 @@
           </div>
           <p>"Professional team, transparent pricing, and excellent after-sales service. They truly care about customer satisfaction."</p>
           <div class="flex-center gap-sm mt-md">
-            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Customer" style="width: 50px; height: 50px; border-radius: 50%;">
+            <img src="Image/Rad.png" alt="Customer" style="width: 30px; height: 30px; border-radius: 50%;">
             <div>
               <strong>David Chen</strong>
-              <p style="font-size: 0.875rem; margin: 0;">Mercedes-AMG Owner</p>
+              <p style="font-size: 0.875rem; margin: 0;">Lexus ES 350 Owner</p>
             </div>
           </div>
         </div>
@@ -473,8 +762,8 @@
           <h3 class="footer-title">RadMotors</h3>
           <p>Your trusted partner for premium vehicles. Experience luxury car buying like never before.</p>
           <div class="flex gap-sm mt-md">
-            <a href="#" style="color: var(--text-light);"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" style="color: var(--text-light);"><i class="fab fa-instagram"></i></a>
+            <a href="facebook.com/radmotor" style="color: var(--text-light);"><i class="fab fa-facebook-f"></i></a>
+            <a href="instagram.com/radmotors" style="color: var(--text-light);"><i class="fab fa-instagram"></i></a>
             <a href="#" style="color: var(--text-light);"><i class="fab fa-twitter"></i></a>
             <a href="#" style="color: var(--text-light);"><i class="fab fa-youtube"></i></a>
           </div>
@@ -485,7 +774,7 @@
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="cars.html">Available Cars</a></li>
-            <li><a href="categories.html">Categories</a></li>
+            <!-- <li><a href="categories.html">Categories</a></li> -->
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
@@ -494,43 +783,32 @@
         <div>
           <h3 class="footer-title">Car Categories</h3>
           <ul class="footer-links">
-            <li><a href="categories.html">Luxury Cars</a></li>
-            <li><a href="categories.html">Sports Cars</a></li>
-            <li><a href="categories.html">SUVs</a></li>
-            <li><a href="categories.html">Sedans</a></li>
-            <li><a href="categories.html">Electric Vehicles</a></li>
+            <li><a href="cars.html">Luxury Cars</a></li>
+            <li><a href="cars.html">Sports Cars</a></li>
+            <li><a href="cars.html">SUVs</a></li>
+            <li><a href="cars.html">Sedans</a></li>
+            <li><a href="cars.html">Electric Vehicles</a></li>
           </ul>
         </div>
         
         <div>
           <h3 class="footer-title">Contact Info</h3>
           <ul class="footer-links">
-            <li><i class="fas fa-map-marker-alt"></i> 123 Auto Boulevard, Palo Alto, CA 94301</li>
+            <li><i class="fas fa-map-marker-alt"></i>Kuola Akala Express, Ibadan</li>
             <li><i class="fas fa-phone"></i> 09061957126</li>
             <li><i class="fas fa-envelope"></i> Radmotorsw@gmail.com</li>
             <li><i class="fab fa-whatsapp"></i> +234 9061957126</li>
           </ul>
         </div>
       </div>
+       
       
       <div class="footer-bottom">
-        <p>&copy; 2024 RadMotors. All rights reserved.</p>
+        <p>&copy; 2026 RadMotors. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
-  <!-- Floating Buttons -->
-  <div class="floating-buttons">
-    <a href="https://wa.me/1234567890" class="floating-btn whatsapp-btn" target="_blank" title="Chat on WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-    <button class="floating-btn scroll-top-btn" onclick="scrollToTop()" title="Scroll to Top">
-      <i class="fas fa-arrow-up"></i>
-    </button>
-    <button class="floating-btn scroll-bottom-btn" onclick="scrollToBottom()" title="Scroll to Bottom">
-      <i class="fas fa-arrow-down"></i>
-    </button>
-  </div>
 
   <!-- JavaScript -->
   <script>

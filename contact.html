@@ -6,7 +6,7 @@
   <meta name="description" content="Contact RadMotors - Get in touch with our team. Visit our dealership, call us, or send a message.">
   <meta name="keywords" content="contact us, car dealer contact, visit dealership, customer support">
   <title>Contact Us | RadMotors</title>
-   <link rel="icon" href="Image/RadLogo.png" type="image/png">
+   <link rel="shortcut icon" href="Image/Rad.png" type="image/png">
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -263,8 +263,9 @@
   <nav class="navbar">
     <div class="navbar-container">
       <a href="index.html" class="navbar-logo">
-        <i class="fas fa-car-side text-gold"></i>
-        Rad<span>Motors</span>
+        <!-- <i class="fas fa-car-side text-gold"></i> -->
+         <img src="Image/Radlog.png" alt="Logo" style="width: 150px; height: 50px; margin-right: 8px;">
+        <!-- Rad<span>Motors</span> -->
       </a>
       
       <button class="navbar-toggle" onclick="toggleNavbar()">
@@ -274,7 +275,7 @@
       <ul class="navbar-nav">
         <li><a href="index.html" class="navbar-link">Home</a></li>
         <li><a href="cars.html" class="navbar-link">Available Cars</a></li>
-        <li><a href="categories.html" class="navbar-link">Categories</a></li>
+        <!-- <li><a href="categories.html" class="navbar-link">Categories</a></li> -->
         <li><a href="about.html" class="navbar-link">About Us</a></li>
         <li><a href="contact.html" class="navbar-link">Contact</a></li>
         <li>
@@ -309,7 +310,7 @@
               </div>
               <div class="info-content">
                 <h4>Visit Our Dealership</h4>
-                <p>123 Auto Boulevard<br>Palo Alto, CA 94301</p>
+                <p>Kuola Akala Express<br>Ibadan, Nigeria</p>
               </div>
             </div>
             
@@ -354,18 +355,18 @@
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label">First Name *</label>
-                  <input type="text" class="form-input" required placeholder="John">
+                  <input type="text" class="form-input" required placeholder="First name">
                 </div>
                 <div class="form-group">
                   <label class="form-label">Last Name *</label>
-                  <input type="text" class="form-input" required placeholder="Doe">
+                  <input type="text" class="form-input" required placeholder="Last Name">
                 </div>
               </div>
               
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label">Phone Number *</label>
-                  <input type="tel" class="form-input" required placeholder="09061957126">
+                  <input type="tel" class="form-input" required placeholder="xxx-xxxx-xxx">
                 </div>
                 <div class="form-group">
                   <label class="form-label">Email Address *</label>
@@ -402,7 +403,7 @@
         <div>
           <!-- Quick Actions -->
           <div class="quick-actions">
-            <div class="quick-action-card" onclick="window.location.href='cars.html'">
+            <div class="quick-action-card" onclick="window.open('https://wa.me/09061957126', '_blank')">
               <div class="action-icon">
                 <i class="fas fa-calendar-alt"></i>
               </div>
@@ -425,15 +426,15 @@
             <div class="hours-list">
               <div class="hours-item">
                 <span class="hours-day">Monday - Friday</span>
-                <span class="hours-time">9:00 AM - 7:00 PM</span>
+                <span class="hours-time">8:00 AM - 6:00 PM</span>
               </div>
               <div class="hours-item">
                 <span class="hours-day">Saturday</span>
-                <span class="hours-time">10:00 AM - 6:00 PM</span>
+                <span class="hours-time">8:00 AM - 6:00 PM</span>
               </div>
               <div class="hours-item">
                 <span class="hours-day">Sunday</span>
-                <span class="hours-time">Closed</span>
+                <span class="hours-time">9:00 AM - 2:00 PM</span>
               </div>
             </div>
             <p style="margin-top: var(--spacing-md); font-size: 0.875rem; color: var(--text-gray);">
@@ -443,12 +444,7 @@
           
           <!-- Map -->
           <div class="map-section" style="margin-top: var(--spacing-xl);">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.639290621062!2d-122.16350768469227!3d37.4419146798252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fba02425dad8f%3A0x6c296c66619367e0!2sPalo%20Alto%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.9471162189157!2d3.8234233748139825!3d7.3598251926492075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10398d0c32bbd5ef%3A0xbae5eb4f8fa80d63!2sOJ%20VENTURES.%20KUOLA%20BUS%20STOP%20AKALA%20EXPRESS%20IBADAN!5e0!3m2!1sen!2sng!4v1772627692405!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
           
           <!-- Social Media -->
@@ -483,11 +479,11 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <h3 class="footer-title">PremiumAuto</h3>
+          <h3 class="footer-title">RadMotors</h3>
           <p>Your trusted partner for premium vehicles. Experience luxury car buying like never before.</p>
           <div class="flex gap-sm mt-md">
-            <a href="#" style="color: var(--text-light);"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" style="color: var(--text-light);"><i class="fab fa-instagram"></i></a>
+             <a href="facebook.com/radmotor" style="color: var(--text-light);"><i class="fab fa-facebook-f"></i></a>
+            <a href="instagram.com/radmotors" style="color: var(--text-light);"><i class="fab fa-instagram"></i></a>
             <a href="#" style="color: var(--text-light);"><i class="fab fa-twitter"></i></a>
             <a href="#" style="color: var(--text-light);"><i class="fab fa-youtube"></i></a>
           </div>
@@ -498,7 +494,7 @@
           <ul class="footer-links">
             <li><a href="index.html">Home</a></li>
             <li><a href="cars.html">Available Cars</a></li>
-            <li><a href="categories.html">Categories</a></li>
+            <!-- <li><a href="categories.html">Categories</a></li> -->
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
@@ -507,18 +503,18 @@
         <div>
           <h3 class="footer-title">Car Categories</h3>
           <ul class="footer-links">
-            <li><a href="categories.html">Luxury Cars</a></li>
-            <li><a href="categories.html">Sports Cars</a></li>
-            <li><a href="categories.html">SUVs</a></li>
-            <li><a href="categories.html">Sedans</a></li>
-            <li><a href="categories.html">Electric Vehicles</a></li>
+            <li><a href="cars.html">Luxury Cars</a></li>
+            <li><a href="cars.html">Sports Cars</a></li>
+            <li><a href="cars.html">SUVs</a></li>
+            <li><a href="cars.html">Sedans</a></li>
+            <li><a href="cars.html">Electric Vehicles</a></li>
           </ul>
         </div>
         
         <div>
           <h3 class="footer-title">Contact Info</h3>
           <ul class="footer-links">
-            <li><i class="fas fa-map-marker-alt"></i> 123 Auto Boulevard, Palo Alto, CA 94301</li>
+            <li><i class="fas fa-map-marker-alt"></i> Kuola Bus-stop  Akala Express, Ibadan </li>
             <li><i class="fas fa-phone"></i> 09061957126</li>
             <li><i class="fas fa-envelope"></i> Radmotorsw@gmail.com</li>
             <li><i class="fab fa-whatsapp"></i> 09061957126</li>
@@ -532,18 +528,7 @@
     </div>
   </footer>
 
-  <!-- Floating Buttons -->
-  <div class="floating-buttons">
-    <a href="https://wa.me/09061957126" class="floating-btn whatsapp-btn" target="_blank" title="Chat on WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-    <button class="floating-btn scroll-top-btn" onclick="scrollToTop()" title="Scroll to Top">
-      <i class="fas fa-arrow-up"></i>
-    </button>
-    <button class="floating-btn scroll-bottom-btn" onclick="scrollToBottom()" title="Scroll to Bottom">
-      <i class="fas fa-arrow-down"></i>
-    </button>
-  </div>
+  
 
   <!-- JavaScript -->
   <script>

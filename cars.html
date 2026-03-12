@@ -1,248 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Browse our extensive collection of premium vehicles. Filter by price, brand, year, and more.">
-  <meta name="keywords" content="car inventory, available cars, car search, luxury cars for sale">
-  <title>Available Cars | RadMotors</title>
-   <link rel="icon" href="Image/RadLogo.png" type="image/png">
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/styles.css">
-  
-  <style>
-    /* Cars Page Specific Styles */
-    .cars-header {
-      background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-black) 100%);
-      color: var(--text-light);
-      padding: var(--spacing-2xl) 0;
-      text-align: center;
-    }
-    
-    .filters-section {
-      background: var(--background-light);
-      padding: var(--spacing-lg);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-md);
-      margin-bottom: var(--spacing-xl);
-      border: 1px solid var(--border-light);
-    }
-    
-    .filters-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: var(--spacing-md);
-    }
-    
-    .search-box {
-      position: relative;
-    }
-    
-    .search-box input {
-      padding-left: 40px;
-    }
-    
-    .search-box i {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-gray);
-    }
-    
-    .filter-reset {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-    }
-    
-    .cars-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: var(--spacing-lg);
-    }
-    
-    @media (max-width: 768px) {
-      .cars-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-    
-    .car-card {
-      background: var(--background-light);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-      transition: all var(--transition-base);
-      border: 1px solid var(--border-light);
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .car-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-xl);
-    }
-    
-    .car-card-image {
-      position: relative;
-      aspect-ratio: 16/10;
-      overflow: hidden;
-    }
-    
-    .car-card-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform var(--transition-slow);
-    }
-    
-    .car-card:hover .car-card-image img {
-      transform: scale(1.08);
-    }
-    
-    .car-badge {
-      position: absolute;
-      top: var(--spacing-sm);
-      right: var(--spacing-sm);
-      background: var(--primary-gold);
-      color: var(--text-dark);
-      padding: 4px 12px;
-      border-radius: var(--radius-full);
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-    
-    .car-favorite {
-      position: absolute;
-      top: var(--spacing-sm);
-      left: var(--spacing-sm);
-      width: 40px;
-      height: 40px;
-      background: var(--background-light);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all var(--transition-fast);
-      border: 1px solid var(--border-light);
-    }
-    
-    .car-favorite:hover {
-      background: var(--primary-gold);
-      border-color: var(--primary-gold);
-    }
-    
-    .car-favorite.active {
-      color: #EF4444;
-    }
-    
-    .car-card-content {
-      padding: var(--spacing-md);
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .car-card-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: var(--spacing-xs);
-      color: var(--text-dark);
-    }
-    
-    .car-card-price {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary-gold);
-      margin-bottom: var(--spacing-sm);
-    }
-    
-    .car-card-specs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--spacing-sm);
-      margin-bottom: var(--spacing-md);
-    }
-    
-    .car-spec {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.875rem;
-      color: var(--text-gray);
-      background: var(--background-gray);
-      padding: 6px 12px;
-      border-radius: var(--radius-sm);
-    }
-    
-    .car-spec i {
-      color: var(--primary-gold);
-    }
-    
-    .car-card-actions {
-      margin-top: auto;
-      display: flex;
-      gap: var(--spacing-sm);
-    }
-    
-    .car-card-actions .btn {
-      flex: 1;
-    }
-    
-    .no-results {
-      text-align: center;
-      padding: var(--spacing-2xl);
-      color: var(--text-gray);
-    }
-    
-    .no-results i {
-      font-size: 4rem;
-      margin-bottom: var(--spacing-md);
-      color: var(--primary-gold);
-    }
-    
-    .results-count {
-      background: var(--primary-navy);
-      color: var(--text-light);
-      padding: 8px 16px;
-      border-radius: var(--radius-full);
-      font-size: 0.875rem;
-      display: inline-block;
-      margin-bottom: var(--spacing-lg);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Premium luxury car dealership - Find your dream car from our exclusive collection">
+    <meta name="keywords" content="luxury cars, premium cars, car dealership, BMW, Mercedes, Tesla">
+    <title>Available Cars | RadMotors </title>
+    <link rel="shortcut icon" href="Image/Rad.png" type="image/png">
+    <!-- page-specific styles (retain existing rules) -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- theme-aware global stylesheet should come later so its variable-driven rules can override if needed -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
+    <!-- Header Section -->
+    <header class="header" id="header">
+        <nav class="navbar">
     <div class="navbar-container">
       <a href="index.html" class="navbar-logo">
-        <i class="fas fa-car-side text-gold"></i>
-        Rad<span>Motors</span>
+        <!-- <i class="fas fa-car-side text-gold"></i> -->
+         <img src="Image/Radlog.png" alt="Logo" style="width: 150px; height: 50px; margin-right: 8px;">
+        <!-- Rad<span>Motors</span> -->
       </a>
-      
-      <button class="navbar-toggle" onclick="toggleNavbar()">
-        <i class="fas fa-bars"></i>
-      </button>
-      
-      <ul class="navbar-nav">
+               <ul class="nav-links">
         <li><a href="index.html" class="navbar-link">Home</a></li>
         <li><a href="cars.html" class="navbar-link">Available Cars</a></li>
-        <li><a href="categories.html" class="navbar-link">Categories</a></li>
+        <!-- <li><a href="categories.html" class="navbar-link">Categories</a></li> -->
         <li><a href="about.html" class="navbar-link">About Us</a></li>
         <li><a href="contact.html" class="navbar-link">Contact</a></li>
         <li>
@@ -252,635 +37,327 @@
         </li>
         <li><a href="https://wa.me/09061957126" class="btn btn-primary btn-sm">Chat Now</a></li>
       </ul>
-    </div>
-  </nav>
+            </div>
+        </nav>
+    </header>
 
-  <!-- Page Header -->
-  <section class="cars-header">
-    <div class="container">
-      <h1>Available Cars</h1>
-      <p style="font-size: 1.125rem; opacity: 0.9;">Find your perfect vehicle from our premium collection</p>
-    </div>
-  </section>
-
-  <!-- Main Content -->
-  <section class="section">
-    <div class="container">
-      <!-- Filters Section -->
-      <div class="filters-section">
-        <div class="filters-grid">
-          <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" id="searchInput" class="form-input" placeholder="Search cars..." onkeyup="filterCars()">
-          </div>
-          
-          <div class="form-group" style="margin: 0;">
-            <select id="priceFilter" class="form-select" onchange="filterCars()">
-              <option value="">All Prices</option>
-              <option value="0-50000">Under $50,000</option>
-              <option value="50000-100000">$50,000 - $100,000</option>
-              <option value="100000-150000">$100,000 - $150,000</option>
-              <option value="150000-999999">$150,000+</option>
-            </select>
-          </div>
-          
-          <div class="form-group" style="margin: 0;">
-            <select id="brandFilter" class="form-select" onchange="filterCars()">
-              <option value="">All Brands</option>
-              <option value="BMW">BMW</option>
-              <option value="Mercedes">Mercedes</option>
-              <option value="Porsche">Porsche</option>
-              <option value="Audi">Audi</option>
-              <option value="Tesla">Tesla</option>
-              <option value="Lexus">Lexus</option>
-              <option value="Jaguar">Jaguar</option>
-            </select>
-          </div>
-          
-          <div class="form-group" style="margin: 0;">
-            <select id="yearFilter" class="form-select" onchange="filterCars()">
-              <option value="">All Years</option>
-              <option value="2024">2024</option>
-              <option value="2023">2023</option>
-              <option value="2022">2022</option>
-              <option value="2021">2021</option>
-              <option value="2020">2020</option>
-            </select>
-          </div>
-          
-          <div class="form-group" style="margin: 0;">
-            <select id="fuelFilter" class="form-select" onchange="filterCars()">
-              <option value="">All Fuel Types</option>
-              <option value="Petrol">Petrol</option>
-              <option value="Diesel">Diesel</option>
-              <option value="Electric">Electric</option>
-              <option value="Hybrid">Hybrid</option>
-            </select>
-          </div>
-          
-          <div class="filter-reset">
-            <button class="btn btn-secondary" onclick="resetFilters()">
-              <i class="fas fa-redo"></i> Reset
-            </button>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Results Count -->
-      <div style="text-align: center;">
-        <span class="results-count" id="resultsCount">Showing 12 cars</span>
-      </div>
-      
-      <!-- Cars Grid -->
-      <div class="cars-grid" id="carsGrid">
-        <!-- Car Card 1 -->
-        <div class="car-card" data-brand="BMW" data-price="89900" data-year="2024" data-fuel="Petrol">
-          <div class="car-card-image">
-            <span class="car-badge">New</span>
-            <div class="car-favorite" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </div>
-            <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?auto=format&fit=crop&w=800&q=80" alt="BMW M4 Competition">
-          </div>
-          <div class="car-card-content">
-            <h3 class="car-card-title">BMW M4 Competition</h3>
-            <p class="car-card-price">$89,900</p>
-            <div class="car-card-specs">
-              <span class="car-spec"><i class="fas fa-calendar"></i> 2024</span>
-              <span class="car-spec"><i class="fas fa-tachometer-alt"></i> 2,500 mi</span>
-              <span class="car-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
-              <span class="car-spec"><i class="fas fa-cog"></i> Automatic</span>
-            </div>
-            <div class="car-card-actions">
-              <a href="car-details.html" class="btn btn-primary">View Details</a>
-              <a href="https://wa.me/09061957126?text=Hi!%20I'm%20interested%20in%20the%20BMW%20M4%20Competition" class="btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Car Card 2 -->
-        <div class="car-card" data-brand="Mercedes" data-price="124500" data-year="2024" data-fuel="Petrol">
-          <div class="car-card-image">
-            <span class="car-badge">New</span>
-            <div class="car-favorite" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </div>
-            <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80" alt="Mercedes-AMG GT">
-          </div>
-          <div class="car-card-content">
-            <h3 class="car-card-title">Mercedes-AMG GT</h3>
-            <p class="car-card-price">$124,500</p>
-            <div class="car-card-specs">
-              <span class="car-spec"><i class="fas fa-calendar"></i> 2024</span>
-              <span class="car-spec"><i class="fas fa-tachometer-alt"></i> 1,200 mi</span>
-              <span class="car-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
-              <span class="car-spec"><i class="fas fa-cog"></i> Automatic</span>
-            </div>
-            <div class="car-card-actions">
-              <a href="car-details.html" class="btn btn-primary">View Details</a>
-              <a href="https://wa.me/09061957126?text=Hi!%20I'm%20interested%20in%20the%20Mercedes-AMG%20GT" class="btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Car Card 3 -->
-        <div class="car-card" data-brand="Porsche" data-price="149900" data-year="2024" data-fuel="Petrol">
-          <div class="car-card-image">
-            <span class="car-badge">Featured</span>
-            <div class="car-favorite" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </div>
-            <img src="https://images.unsplash.com/photo-1617788138017-80ad40651399?auto=format&fit=crop&w=800&q=80" alt="Porsche 911 Carrera">
-          </div>
-          <div class="car-card-content">
-            <h3 class="car-card-title">Porsche 911 Carrera</h3>
-            <p class="car-card-price">$149,900</p>
-            <div class="car-card-specs">
-              <span class="car-spec"><i class="fas fa-calendar"></i> 2024</span>
-              <span class="car-spec"><i class="fas fa-tachometer-alt"></i> 800 mi</span>
-              <span class="car-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
-              <span class="car-spec"><i class="fas fa-cog"></i> Automatic</span>
-            </div>
-            <div class="car-card-actions">
-              <a href="car-details.html" class="btn btn-primary">View Details</a>
-              <a href="https://wa.me/09061957126?text=Hi!%20I'm%20interested%20in%20the%20Porsche%20911%20Carrera" class="btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Car Card 4 -->
-        <div class="car-card" data-brand="Tesla" data-price="79900" data-year="2024" data-fuel="Electric">
-          <div class="car-card-image">
-            <span class="car-badge">Electric</span>
-            <div class="car-favorite" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </div>
-            <img src="https://images.unsplash.com/photo-1560958089-b8a1929cea89?auto=format&fit=crop&w=800&q=80" alt="Tesla Model S">
-          </div>
-          <div class="car-card-content">
-            <h3 class="car-card-title">Tesla Model S Plaid</h3>
-            <p class="car-card-price">$79,900</p>
-            <div class="car-card-specs">
-              <span class="car-spec"><i class="fas fa-calendar"></i> 2024</span>
-              <span class="car-spec"><i class="fas fa-tachometer-alt"></i> 1,500 mi</span>
-              <span class="car-spec"><i class="fas fa-bolt"></i> Electric</span>
-              <span class="car-spec"><i class="fas fa-cog"></i> Automatic</span>
-            </div>
-            <div class="car-card-actions">
-              <a href="car-details.html" class="btn btn-primary">View Details</a>
-              <a href="https://wa.me/09061957126?text=Hi!%20I'm%20interested%20in%20the%20Tesla%20Model%20S%20Plaid" class="btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Car Card 5 -->
-        <div class="car-card" data-brand="Audi" data-price="92900" data-year="2023" data-fuel="Petrol">
-          <div class="car-card-image">
-            <div class="car-favorite" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </div>
-            <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80" alt="Audi RS7">
-          </div>
-          <div class="car-card-content">
-            <h3 class="car-card-title">Audi RS7 Sportback</h3>
-            <p class="car-card-price">$92,900</p>
-            <div class="car-card-specs">
-              <span class="car-spec"><i class="fas fa-calendar"></i> 2023</span>
-              <span class="car-spec"><i class="fas fa-tachometer-alt"></i> 5,200 mi</span>
-              <span class="car-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
-              <span class="car-spec"><i class="fas fa-cog"></i> Automatic</span>
-            </div>
-            <div class="car-card-actions">
-              <a href="car-details.html" class="btn btn-primary">View Details</a>
-              <a href="https://wa.me/09061957126?text=Hi!%20I'm%20interested%20in%20the%20Audi%20RS7%20Sportback" class="btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Car Card 6 -->
-        <div class="car-card" data-brand="Lexus" data-price="67900" data-year="2024" data-fuel="Hybrid">
-          <div class="car-card-image">
-            <span class="car-badge">Hybrid</span>
-            <div class="car-favorite" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </div>
-            <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80" alt="Lexus LC500h">
-          </div>
-          <div class="car-card-content">
-            <h3 class="car-card-title">Lexus LC500h</h3>
-            <p class="car-card-price">$67,900</p>
-            <div class="car-card-specs">
-              <span class="car-spec"><i class="fas fa-calendar"></i> 2024</span>
-              <span class="car-spec"><i class="fas fa-tachometer-alt"></i> 2,100 mi</span>
-              <span class="car-spec"><i class="fas fa-leaf"></i> Hybrid</span>
-              <span class="car-spec"><i class="fas fa-cog"></i> Automatic</span>
-            </div>
-            <div class="car-card-actions">
-              <a href="car-details.html" class="btn btn-primary">View Details</a>
-              <a href="https://wa.me/09061957126?text=Hi!%20I'm%20interested%20in%20the%20Lexus%20LC500h" class="btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Car Card 7 -->
-        <div class="car-card" data-brand="Jaguar" data-price="112000" data-year="2023" data-fuel="Petrol">
-          <div class="car-card-image">
-            <div class="car-favorite" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </div>
-            <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=800&q=80" alt="Jaguar F-Type">
-          </div>
-          <div class="car-card-content">
-            <h3 class="car-card-title">Jaguar F-Type R</h3>
-            <p class="car-card-price">$112,000</p>
-            <div class="car-card-specs">
-              <span class="car-spec"><i class="fas fa-calendar"></i> 2023</span>
-              <span class="car-spec"><i class="fas fa-tachometer-alt"></i> 3,800 mi</span>
-              <span class="car-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
-              <span class="car-spec"><i class="fas fa-cog"></i> Automatic</span>
-            </div>
-            <div class="car-card-actions">
-              <a href="car-details.html" class="btn btn-primary">View Details</a>
-              <a href="https://wa.me/09061957126?text=Hi!%20I'm%20interested%20in%20the%20Jaguar%20F-Type%20R" class="btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Car Card 8 -->
-        <div class="car-card" data-brand="BMW" data-price="74900" data-year="2024" data-fuel="Petrol">
-          <div class="car-card-image">
-            <span class="car-badge">New</span>
-            <div class="car-favorite" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </div>
-            <img src="https://images.unsplash.com/photo-1556189250-72ba954cfc2b?auto=format&fit=crop&w=800&q=80" alt="BMW X5 M">
-          </div>
-          <div class="car-card-content">
-            <h3 class="car-card-title">BMW X5 M Competition</h3>
-            <p class="car-card-price">$74,900</p>
-            <div class="car-card-specs">
-              <span class="car-spec"><i class="fas fa-calendar"></i> 2024</span>
-              <span class="car-spec"><i class="fas fa-tachometer-alt"></i> 1,800 mi</span>
-              <span class="car-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
-              <span class="car-spec"><i class="fas fa-cog"></i> Automatic</span>
-            </div>
-            <div class="car-card-actions">
-              <a href="car-details.html" class="btn btn-primary">View Details</a>
-              <a href="https://wa.me/09061957126?text=Hi!%20I'm%20interested%20in%20the%20BMW%20X5%20M%20Competition" class="btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Car Card 9 -->
-        <div class="car-card" data-brand="Mercedes" data-price="139000" data-year="2024" data-fuel="Petrol">
-          <div class="car-card-image">
-            <span class="car-badge">Featured</span>
-            <div class="car-favorite" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </div>
-            <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=800&q=80" alt="Mercedes G63 AMG">
-          </div>
-          <div class="car-card-content">
-            <h3 class="car-card-title">Mercedes G63 AMG</h3>
-            <p class="car-card-price">$139,000</p>
-            <div class="car-card-specs">
-              <span class="car-spec"><i class="fas fa-calendar"></i> 2024</span>
-              <span class="car-spec"><i class="fas fa-tachometer-alt"></i> 500 mi</span>
-              <span class="car-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
-              <span class="car-spec"><i class="fas fa-cog"></i> Automatic</span>
-            </div>
-            <div class="car-card-actions">
-              <a href="car-details.html" class="btn btn-primary">View Details</a>
-              <a href="https://wa.me/09061957126?text=Hi!%20I'm%20interested%20in%20the%20Mercedes%20G63%20AMG" class="btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Car Card 10 -->
-        <div class="car-card" data-brand="Porsche" data-price="189000" data-year="2024" data-fuel="Petrol">
-          <div class="car-card-image">
-            <span class="car-badge">Exclusive</span>
-            <div class="car-favorite" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </div>
-            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Porsche Taycan">
-          </div>
-          <div class="car-card-content">
-            <h3 class="car-card-title">Porsche Taycan Turbo S</h3>
-            <p class="car-card-price">$189,000</p>
-            <div class="car-card-specs">
-              <span class="car-spec"><i class="fas fa-calendar"></i> 2024</span>
-              <span class="car-spec"><i class="fas fa-tachometer-alt"></i> 600 mi</span>
-              <span class="car-spec"><i class="fas fa-bolt"></i> Electric</span>
-              <span class="car-spec"><i class="fas fa-cog"></i> Automatic</span>
-            </div>
-            <div class="car-card-actions">
-              <a href="car-details.html" class="btn btn-primary">View Details</a>
-              <a href="https://wa.me/09061957126?text=Hi!%20I'm%20interested%20in%20the%20Porsche%20Taycan%20Turbo%20S" class="btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Car Card 11 -->
-        <div class="car-card" data-brand="Audi" data-price="89900" data-year="2023" data-fuel="Electric">
-          <div class="car-card-image">
-            <span class="car-badge">Electric</span>
-            <div class="car-favorite" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </div>
-            <img src="https://images.unsplash.com/photo-1614200187524-dc4b892acf16?auto=format&fit=crop&w=800&q=80" alt="Audi e-tron GT">
-          </div>
-          <div class="car-card-content">
-            <h3 class="car-card-title">Audi e-tron GT</h3>
-            <p class="car-card-price">$89,900</p>
-            <div class="car-card-specs">
-              <span class="car-spec"><i class="fas fa-calendar"></i> 2023</span>
-              <span class="car-spec"><i class="fas fa-tachometer-alt"></i> 4,200 mi</span>
-              <span class="car-spec"><i class="fas fa-bolt"></i> Electric</span>
-              <span class="car-spec"><i class="fas fa-cog"></i> Automatic</span>
-            </div>
-            <div class="car-card-actions">
-              <a href="car-details.html" class="btn btn-primary">View Details</a>
-              <a href="https://wa.me/09061957126?text=Hi!%20I'm%20interested%20in%20the%20Audi%20e-tron%20GT" class="btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Car Card 12 -->
-        <div class="car-card" data-brand="BMW" data-price="159000" data-year="2024" data-fuel="Petrol">
-          <div class="car-card-image">
-            <span class="car-badge">M Performance</span>
-            <div class="car-favorite" onclick="toggleFavorite(this)">
-              <i class="far fa-heart"></i>
-            </div>
-            <img src="https://images.unsplash.com/photo-1607853554439-0069ec0f29b6?auto=format&fit=crop&w=800&q=80" alt="BMW M8 Competition">
-          </div>
-          <div class="car-card-content">
-            <h3 class="car-card-title">BMW M8 Competition</h3>
-            <p class="car-card-price">$159,000</p>
-            <div class="car-card-specs">
-              <span class="car-spec"><i class="fas fa-calendar"></i> 2024</span>
-              <span class="car-spec"><i class="fas fa-tachometer-alt"></i> 900 mi</span>
-              <span class="car-spec"><i class="fas fa-gas-pump"></i> Petrol</span>
-              <span class="car-spec"><i class="fas fa-cog"></i> Automatic</span>
-            </div>
-            <div class="car-card-actions">
-              <a href="car-details.html" class="btn btn-primary">View Details</a>
-              <a href="https://wa.me/09061957126?text=Hi!%20I'm%20interested%20in%20the%20BMW%20M8%20Competition" class="btn btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- No Results Message -->
-      <div class="no-results" id="noResults" style="display: none;">
-        <i class="fas fa-car"></i>
-        <h3>No cars found</h3>
-        <p>Try adjusting your filters or search terms</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <h3 class="footer-title">RadMotors</h3>
-          <p>Your trusted partner for premium vehicles. Experience luxury car buying like never before.</p>
-          <div class="flex gap-sm mt-md">
-            <a href="#" style="color: var(--text-light);"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" style="color: var(--text-light);"><i class="fab fa-instagram"></i></a>
-            <a href="#" style="color: var(--text-light);"><i class="fab fa-twitter"></i></a>
-            <a href="#" style="color: var(--text-light);"><i class="fab fa-youtube"></i></a>
-          </div>
-        </div>
-        
-        <div>
-          <h3 class="footer-title">Quick Links</h3>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="cars.html">Available Cars</a></li>
-            <li><a href="categories.html">Categories</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h3 class="footer-title">Car Categories</h3>
-          <ul class="footer-links">
-            <li><a href="categories.html">Luxury Cars</a></li>
-            <li><a href="categories.html">Sports Cars</a></li>
-            <li><a href="categories.html">SUVs</a></li>
-            <li><a href="categories.html">Sedans</a></li>
-            <li><a href="categories.html">Electric Vehicles</a></li>
-          </ul>
-        </div>
-        
-        <div>
-          <h3 class="footer-title">Contact Info</h3>
-          <ul class="footer-links">
-            <li><i class="fas fa-map-marker-alt"></i> 123 Auto Boulevard, Palo Alto, CA 94301</li>
-            <li><i class="fas fa-phone"></i> 09061957126</li>
-            <li><i class="fas fa-envelope"></i> info@radmotors.com</li>
-            <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/09061957126" target="_blank">Chat on WhatsApp</a></li>
-          </ul>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <p>&copy; 2026 RadMotors. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Floating Buttons -->
-  <div class="floating-buttons">
-    <a href="https://wa.me/09061957126" class="floating-btn whatsapp-btn" target="_blank" title="Chat on WhatsApp">
-      <i class="fab fa-whatsapp"></i>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/09061957126" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
     </a>
-    <button class="floating-btn scroll-top-btn" onclick="scrollToTop()" title="Scroll to Top">
-      <i class="fas fa-arrow-up"></i>
-    </button>
-    <button class="floating-btn scroll-bottom-btn" onclick="scrollToBottom()" title="Scroll to Bottom">
-      <i class="fas fa-arrow-down"></i>
-    </button>
-  </div>
 
-  <!-- JavaScript -->
-  <script>
-    // Theme Toggle
-    function toggleTheme() {
-      const html = document.documentElement;
-      const icon = document.getElementById('theme-icon');
-      
-      if (html.getAttribute('data-theme') === 'light') {
-        html.setAttribute('data-theme', 'dark');
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-        localStorage.setItem('theme', 'dark');
-      } else {
-        html.setAttribute('data-theme', 'light');
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-        localStorage.setItem('theme', 'light');
-      }
-    }
-    
-    // Load saved theme
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      document.documentElement.setAttribute('data-theme', savedTheme);
-      const icon = document.getElementById('theme-icon');
-      if (savedTheme === 'dark') {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-      }
-    }
-    
-    // Navbar Toggle
-    function toggleNavbar() {
-      const nav = document.querySelector('.navbar-nav');
-      nav.classList.toggle('active');
-    }
-    
-    // Filter Cars
-    function filterCars() {
-      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-      const priceRange = document.getElementById('priceFilter').value;
-      const brand = document.getElementById('brandFilter').value;
-      const year = document.getElementById('yearFilter').value;
-      const fuel = document.getElementById('fuelFilter').value;
-      
-      const cars = document.querySelectorAll('.car-card');
-      let visibleCount = 0;
-      
-      cars.forEach(car => {
-        const carBrand = car.getAttribute('data-brand');
-        const carPrice = parseInt(car.getAttribute('data-price'));
-        const carYear = car.getAttribute('data-year');
-        const carFuel = car.getAttribute('data-fuel');
-        const carTitle = car.querySelector('.car-card-title').textContent.toLowerCase();
-        
-        let showCar = true;
-        
-        // Search filter
-        if (searchTerm && !carTitle.includes(searchTerm)) {
-          showCar = false;
-        }
-        
-        // Brand filter
-        if (brand && carBrand !== brand) {
-          showCar = false;
-        }
-        
-        // Year filter
-        if (year && carYear !== year) {
-          showCar = false;
-        }
-        
-        // Fuel filter
-        if (fuel && carFuel !== fuel) {
-          showCar = false;
-        }
-        
-        // Price filter
-        if (priceRange) {
-          const [min, max] = priceRange.split('-').map(Number);
-          if (carPrice < min || carPrice > max) {
-            showCar = false;
-          }
-        }
-        
-        if (showCar) {
-          car.style.display = 'flex';
-          visibleCount++;
-        } else {
-          car.style.display = 'none';
-        }
-      });
-      
-      // Update results count
-      document.getElementById('resultsCount').textContent = `Showing ${visibleCount} cars`;
-      
-      // Show/hide no results message
-      const noResults = document.getElementById('noResults');
-      if (visibleCount === 0) {
-        noResults.style.display = 'block';
-      } else {
-        noResults.style.display = 'none';
-      }
-    }
-    
-    // Reset Filters
-    function resetFilters() {
-      document.getElementById('searchInput').value = '';
-      document.getElementById('priceFilter').value = '';
-      document.getElementById('brandFilter').value = '';
-      document.getElementById('yearFilter').value = '';
-      document.getElementById('fuelFilter').value = '';
-      filterCars();
-    }
-    
-    // Toggle Favorite
-    function toggleFavorite(button) {
-      button.classList.toggle('active');
-      const icon = button.querySelector('i');
-      if (button.classList.contains('active')) {
-        icon.classList.remove('far');
-        icon.classList.add('fas');
-      } else {
-        icon.classList.remove('fas');
-        icon.classList.add('far');
-      }
-    }
-    
-    // Scroll to Top
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    
-    // Scroll to Bottom
-    function scrollToBottom() {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-    
-    // Show/Hide Scroll Top Button
-    window.addEventListener('scroll', () => {
-      const scrollTopBtn = document.querySelector('.scroll-top-btn');
-      if (window.scrollY > 300) {
-        scrollTopBtn.style.opacity = '1';
-        scrollTopBtn.style.visibility = 'visible';
-      } else {
-        scrollTopBtn.style.opacity = '0';
-        scrollTopBtn.style.visibility = 'hidden';
-      }
-    });
-  </script>
+    <!-- Scroll Buttons -->
+    <button class="scroll-top" id="scrollTop" title="Scroll to Top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <button class="scroll-bottom" id="scrollBottom" title="Scroll to Bottom">
+        <i class="fas fa-arrow-down"></i>
+    </button>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section" id="home">
+             <div class="hero-background">
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=2000&q=80" alt="Luxury Car">
+    </div>
+            <div class="hero-content">
+                <h1>Find Your Perfect Luxury Car</h1>
+                <p>Discover our exclusive collection of premium vehicles</p>
+            </div>
+        </section>
+
+        <!-- Animated Statistics -->
+        <section class="statistics-section">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">Cars Sold</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="50">0</div>
+                    <div class="stat-label">Happy Clients</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-target="20">0</div>
+                    <div class="stat-label">Trusted Brands</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Available Cars Section -->
+        <section class="available-cars-section" id="available-cars">
+            <div class="container">
+                <h2 class="section-title">Available Cars</h2>
+                
+                <!-- Filter & Search Area -->
+                <div class="filter-section">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Search by car name or keyword...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                    <div class="filters-container">
+                        <div class="filter-group">
+                            <label>Brand</label>
+                            <select id="brandFilter">
+                                <option value="">All Brands</option>
+                                <option value="BMW">BMW</option>
+                                <option value="Mercedes">Mercedes</option>
+                                <option value="Tesla">Tesla</option>
+                                <option value="Audi">Audi</option>
+                                <option value="Porsche">Porsche</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Price Range</label>
+                            <div class="price-slider">
+                                <input type="range" id="priceRange" min="0" max="200000000" step="5000" value="200000000">
+                                <span id="priceValue">#200,000,000</span>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Year</label>
+                            <select id="yearFilter">
+                                <option value="">All Years</option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2012</option>
+                                <option value="2021">2010</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Fuel Type</label>
+                            <select id="fuelFilter">
+                                <option value="">All Types</option>
+                                <option value="Electric">Electric</option>
+                                <option value="Petrol">Petrol</option>
+                                <option value="Diesel">Diesel</option>
+                                <option value="Hybrid">Hybrid</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Transmission</label>
+                            <select id="transmissionFilter">
+                                <option value="">All Types</option>
+                                <option value="Automatic">Automatic</option>
+                                <option value="Manual">Manual</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Body Type</label>
+                            <select id="bodyTypeFilter">
+                                <option value="">All Types</option>
+                                <option value="SUV">SUV</option>
+                                <option value="Sedan">Sedan</option>
+                                <option value="Truck">Truck</option>
+                                <option value="Electric">Electric</option>
+                                <option value="Luxury">Luxury</option>
+                                <option value="Budget">Budget</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Sort By</label>
+                            <select id="sortFilter">
+                                <option value="default">Default</option>
+                                <option value="price-low">Price Low - High</option>
+                                <option value="price-high">Price High - Low</option>
+                                <option value="newest">Newest First</option>
+                            </select>
+                        </div>
+                        
+                        <button class="clear-filters-btn" id="clearFilters">
+                            <i class="fas fa-times"></i> Clear Filters
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Cars Grid -->
+                <div class="cars-grid" id="carsGrid">
+                    <!-- Cars will be dynamically inserted here -->
+                </div>
+
+                <!-- No Results Message -->
+                <div class="no-results" id="noResults" style="display: none;">
+                    <i class="fas fa-car"></i>
+                    <h3>No cars found matching your criteria</h3>
+                    <p>Try adjusting your filters or search terms</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recently Viewed Section -->
+        <section class="recently-viewed-section" id="recentlyViewedSection" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Recently Viewed</h2>
+                <div class="recently-viewed-grid" id="recentlyViewedGrid">
+                    <!-- Recently viewed cars will be inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Compare Section -->
+        <section class="compare-section" id="compareSection" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Compare Cars</h2>
+                <div class="compare-container" id="compareContainer">
+                    <!-- Cars to compare will be inserted here -->
+                </div>
+                <div class="compare-actions">
+                    <button class="btn-clear-compare" id="clearCompare">
+                        <i class="fas fa-times"></i> Clear All
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Favorites Section -->
+        <section class="favorites-section" id="favoritesSection" style="display: none;">
+            <div class="container">
+                <h2 class="section-title">Your Favorites</h2>
+                <div class="favorites-grid" id="favoritesGrid">
+                    <!-- Favorite cars will be inserted here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Rad Motors</h3>
+                    <p>Your trusted partner in finding the perfect luxury vehicle.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-phone"></i> (234) 9061957126</p>
+                    <p><i class="fas fa-envelope"></i> radmotorsw@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i>Kuola Bus-stop  Akala Express, Ibadan </p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="facebook.com/radmotor"><i class="fab fa-facebook"></i></a>
+                        <a href="instagram.com/radmotors"><i class="fab fa-instagram"></i></a>
+                        <a href="twitter.com/radmotor"><i class="fab fa-twitter"></i></a>
+                        <a href="youtube.com/radmotors"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Rad Motors. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Car Details Modal -->
+    <div class="modal-overlay" id="carModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-body">
+                <!-- Image Gallery -->
+                <div class="modal-gallery">
+                    <div class="main-image-container">
+                        <img src="" alt="Car" class="main-image" id="modalMainImage">
+                        <button class="gallery-prev" id="galleryPrev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="gallery-next" id="galleryNext">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                    <div class="thumbnail-slider" id="thumbnailSlider">
+                        <!-- Thumbnails will be inserted here -->
+                    </div>
+                </div>
+
+                <!-- Car Details -->
+                <div class="modal-details">
+                    <div class="modal-header">
+                        <h2 id="modalCarName">Car Name</h2>
+                        <span class="modal-year" id="modalYear">2024</span>
+                        <span class="modal-price" id="modalPrice">#0</span>
+                        <span class="modal-status" id="modalStatus">In Stock</span>
+                    </div>
+
+                    <!-- Specifications -->
+                    <div class="modal-specifications">
+                        <h3>Specifications</h3>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <i class="fas fa-cogs"></i>
+                                <span class="spec-label">Engine</span>
+                                <span class="spec-value" id="modalEngine">-</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-cog"></i>
+                                <span class="spec-label">Transmission</span>
+                                <span class="spec-value" id="modalTransmission">-</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span class="spec-label">Mileage</span>
+                                <span class="spec-value" id="modalMileage">-</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-gas-pump"></i>
+                                <span class="spec-label">Fuel Type</span>
+                                <span class="spec-value" id="modalFuel">-</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-chair"></i>
+                                <span class="spec-label">Interior</span>
+                                <span class="spec-value" id="modalInterior">-</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span class="spec-label">Safety</span>
+                                <span class="spec-value" id="modalSafety">-</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-palette"></i>
+                                <span class="spec-label">Exterior</span>
+                                <span class="spec-value" id="modalExterior">-</span>
+                            </div>
+                            <div class="spec-item">
+                                <i class="fas fa-tv"></i>
+                                <span class="spec-label">Infotainment</span>
+                                <span class="spec-value" id="modalInfotainment">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Why Get This Car -->
+                    <div class="modal-why-get">
+                        <h3>Why You Should Get This Car</h3>
+                        <div class="why-get-list" id="modalWhyGet">
+                            <!-- Benefits will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="modal-cta">
+                        <a href="#" class="btn-whatsapp-enquiry" id="modalWhatsappBtn" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp"></i>
+                            Enquire on WhatsApp About This Car
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
