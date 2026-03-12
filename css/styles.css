@@ -67,7 +67,59 @@
 /* Light Mode Overrides (ensure white text switches to dark) */
 [data-theme="light"] {
   /* when in light theme we don't want any element forced white, so override variable */
-  --text-white: #000000;
+  --text-white: #FFFFFF;
+}
+
+/* Light Mode - White text for cards and dropdowns */
+[data-theme="light"] .card-title,
+[data-theme="light"] .card-spec,
+[data-theme="light"] .form-select,
+[data-theme="light"] .form-input,
+[data-theme="light"] .filter-group label,
+[data-theme="light"] input[type="text"],
+[data-theme="light"] input[type="range"],
+[data-theme="light"] select {
+  color: #FFFFFF;
+}
+
+/* Light Mode - Placeholder text color */
+[data-theme="light"] .form-select::placeholder,
+[data-theme="light"] .form-input::placeholder,
+[data-theme="light"] input::placeholder {
+  color: #B0B0B0;
+}
+
+/* Light Mode - Dark background for form elements with white text */
+[data-theme="light"] .form-select,
+[data-theme="light"] .form-input,
+[data-theme="light"] input[type="text"],
+[data-theme="light"] select {
+  background-color: #2A2A2A;
+  border-color: #444444;
+  color: #FFFFFF;
+}
+
+/* Light Mode - Dark background for cards */
+[data-theme="light"] .card-content {
+  background-color: #2A2A2A;
+  color: #FFFFFF;
+}
+
+/* Light Mode - Option styling in dropdowns */
+[data-theme="light"] .form-select option,
+[data-theme="light"] select option {
+  background-color: #2A2A2A;
+  color: #FFFFFF;
+}
+
+/* Light Mode - Modal name, year, and description text (white) */
+[data-theme="light"] .modal-header h2,
+[data-theme="light"] .modal-year,
+[data-theme="light"] .modal-specifications h3,
+[data-theme="light"] .modal-why-get h3,
+[data-theme="light"] .spec-label,
+[data-theme="light"] .why-get-item {
+  color: #FFFFFF;
 }
 /* ===== RESET & BASE STYLES ===== */
 * {

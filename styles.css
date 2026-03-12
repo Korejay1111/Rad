@@ -16,6 +16,39 @@
     --transition-fast: all 0.2s ease;
 }
 
+/* Light Mode Overrides - White text for modal name, year, and description */
+[data-theme="light"] .modal-header h2,
+[data-theme="light"] .modal-year,
+[data-theme="light"] .modal-specifications h3,
+[data-theme="light"] .modal-why-get h3,
+[data-theme="light"] .spec-label,
+[data-theme="light"] .spec-value,
+[data-theme="light"] .why-get-item {
+    color: #FFFFFF !important;
+}
+
+/* Light Mode - Dark background for modal items */
+[data-theme="light"] .spec-item,
+[data-theme="light"] .why-get-item {
+    background-color: #2A2A2A !important;
+    border-color: #444444 !important;
+}
+
+/* Light Mode - Pure white car year and description */
+[data-theme="light"] .car-year,
+[data-theme="light"] .car-description {
+    color: hsl(0, 0%, 100%) !important;
+    /* font-weight: 700; */
+}
+
+/* Light Mode - Black text in header */
+[data-theme="light"] .header,
+[data-theme="light"] .nav-links a,
+[data-theme="light"] .logo,
+[data-theme="light"] .navbar-link {
+    color: #000000 !important;
+}
+
 * {
     margin: 0;
     padding: 0;
