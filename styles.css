@@ -45,7 +45,8 @@
 [data-theme="light"] .header,
 [data-theme="light"] .nav-links a,
 [data-theme="light"] .logo,
-[data-theme="light"] .navbar-link {
+[data-theme="light"] .navbar-link,
+[data-theme="light"] .navbar-toggle {
     color: #000000 !important;
 }
 
