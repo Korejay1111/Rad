@@ -733,7 +733,7 @@ function createCarCard(car) {
                 <p class="car-description">${car.description}</p>
                 <div class="car-buttons">
                     <button class="btn-view-details" onclick="openModal(${car.id})">View Details</button>
-                    <a href="https://wa.me/09061957126?text=Hello, I'm interested in the ${car.year} ${car.name} listed on your website. Please send more details." 
+                    <a href="https://wa.me/2349061957126?text=Hello, I'm interested in the ${car.year} ${car.name} listed on your website. Please send more details." 
                        class="btn-whatsapp-quick" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp">
                         <i class="fab fa-whatsapp"></i>
                     </a>
@@ -822,7 +822,7 @@ function openModal(carId) {
 
     // Update WhatsApp button
     const whatsappBtn = document.getElementById('modalWhatsappBtn');
-    whatsappBtn.href = `https://wa.me/?text=Hello, I'm interested in the ${car.year} ${car.name} listed on your website. Please send more details.`;
+    whatsappBtn.href = `https://wa.me/2349061957126?text=Hello, I'm interested in the ${car.year} ${car.name} listed on your website. Please send more details.`;
 
     // Update why get list
     const whyGetList = document.getElementById('modalWhyGet');
