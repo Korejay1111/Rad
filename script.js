@@ -381,7 +381,7 @@ const carsData = [
     name: "Lexus ES 350",
     brand: "Lexus",
     year: 2013,
-    price: 19000000,
+    price: 8000000,
     fuel: "Petrol",
     transmission: "Automatic",
     bodyType: "Luxury Sedan",
